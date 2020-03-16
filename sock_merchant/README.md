@@ -44,3 +44,9 @@ Explanation
 sock.png
 
 John can match three pairs of socks.
+
+---
+## Run Tests ##
+```
+python -m unittest discover -s tests/
+```

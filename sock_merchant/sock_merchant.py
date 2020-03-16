@@ -2,6 +2,7 @@
 
 import math
 
+
 def solve_sock_merchant(n, ar):
     bucket_dictionary = {}
     result = 0

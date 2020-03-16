@@ -1,3 +1,4 @@
+import sock_merchant
 import inspect
 import os
 import sys
@@ -7,23 +8,27 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-import sock_merchant
 
-class TestSockMerchant(unittest.TestCase):
-    def test_upper(self):
-        sock_merchant.test_print()
-        self.assertEqual('foo'.upper(), 'FOO')
+class test_sock_merchant(unittest.TestCase):
+    default_vars = {"n": 9, "ar": [10, 20, 20, 10, 10, 30, 50, 10, 20]}
 
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
+    def test_solve_odd(self):
+        self.assertEqual(sock_merchant.solve_sock_merchant(
+                         self.default_vars.get('n'),
+                         self.default_vars.get('ar')), 3)
+        print(f"{self.id()}")
 
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
+    def test_solve_even(self):
+        n = 8
+        ar = [10, 20, 20, 10, 10, 30, 50, 10]
+        self.assertEqual(sock_merchant.solve_sock_merchant(n, ar), 3)
+        print(f"{self.id()}")
+
+    def test_is_integer(self):
+        self.assertIsInstance(sock_merchant.solve_sock_merchant(
+                         self.default_vars.get('n'),
+                         self.default_vars.get('ar')), type(0))
+        print(f"{self.id()}")
 
 
 if __name__ == '__main__':

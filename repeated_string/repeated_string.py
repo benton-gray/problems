@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 
 import collections
+import math
 
 
 def solve_repeated_string(n, substring):
-    if substring == 'a':
-        return n
+    last_substring_size = n % len(substring)
+    substring_factor = math.floor(n / len(substring))
 
-    while len(substring) <= n:
-        count = n - len(substring)
-        substring += substring
-    cnt = collections.Counter(substring[0:n])
-    return cnt['a']
+    cnt = collections.Counter(substring)
+    last_cnt = collections.Counter(substring[0:last_substring_size])
+    return ((cnt['a'] * substring_factor) + last_cnt['a'])
 
 
 if __name__ == '__main__':

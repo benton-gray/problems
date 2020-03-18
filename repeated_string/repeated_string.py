@@ -7,7 +7,6 @@ import math
 def solve_repeated_string(n, substring):
     last_substring_size = n % len(substring)
     substring_factor = math.floor(n / len(substring))
-
     cnt = collections.Counter(substring)
     last_cnt = collections.Counter(substring[0:last_substring_size])
     return ((cnt['a'] * substring_factor) + last_cnt['a'])
